@@ -19,8 +19,9 @@ This is motivated by the requirements of Yandex https://help.yandex.com/webmaste
 
 ## Other changes 
 
+* Supports Play 2.3.x
 * `@Snapshot` currently does not support options of the original implementation
-* HtmlUnit is upgraded to 2.15
+* `HtmlUnit` is upgraded to 2.15
 
 ## Usage
 
