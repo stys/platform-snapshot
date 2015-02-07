@@ -38,7 +38,6 @@ Set some parameters in `application.conf`
 ```text
 platform.snapshot.browserVersion = CHROME
 platform.snapshot.waitForJavascriptMs = 2000
-}
 ```
 
 See HtmlUnit documentation for available browser versions.
