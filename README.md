@@ -2,7 +2,9 @@
 
 Fork of the original https://github.com/vznet/play-snapshot implemented in Java. 
 
-Adds an ability to distinguish snapshotting requests from other requests and return something different.
+## Motivation
+
+Adds an ability to distinguish snapshotting requests and return something different.
 This is motivated by the requirements of Yandex https://help.yandex.com/webmaster/robot-workings/ajax-indexing.xml
 
 > The main page’s HTML version is available at the address with the parameter "?_escaped_fragment_=" added to it. For   example: http://www.example.ru/?_escaped_fragment_=. Note: the value of the parameter should be empty.
@@ -15,4 +17,38 @@ This is motivated by the requirements of Yandex https://help.yandex.com/webmaste
 >
 > You should not place the meta tag in the HTML version of the document. If you do so, the page will not be indexed.
 
-# 
+## Other changes 
+
+* `@Snapshot` currently does not support options of the original implementation
+* HtmlUnit is upgraded to 2.15
+
+## Usage
+
+Add resolver and dependencies to `build.sbt` of your project
+```sbt
+resolvers += "Snapshots" at "https://raw.github.com/stys/maven-releases/master/"
+
+libraryDependencies ++= Seq(
+    "com.stys" %% "platform-snapshot" % "1.1.0"    
+)
+```
+
+Set some parameters in `application.conf`
+
+```text
+platform.snapshot.browserVersion = CHROME
+platform.snapshot.waitForJavascriptMs = 2000
+}
+```
+
+See HtmlUnit documentation for available browser versions.
+
+Use `@Snapshot` to annotate actions
+```java
+import com.stys.platform.snapshot.Snapshot;
+
+@Snapshot
+public static Result index() {
+	return ok(index.render());
+}
+```
