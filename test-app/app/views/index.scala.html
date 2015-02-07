@@ -1,0 +1,37 @@
+@()
+
+@import com.stys.platform.snapshot.TemplateHelpers._
+
+<!DOCTYPE html>
+<html>
+	<head>
+						
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+			$(document).ready( function() {
+				setTimeout(function() {
+					$('body').append("<p>" + "Ok" + "</p>");
+				}, 1000);
+			});
+		</script>
+		
+		
+	</head>
+	<body>
+		
+		@* This is removed when snapshotting *@
+		@if( snapshotting() ) {
+			<p>This is a snapshot. <a href="@routes.Application.index()">Go back to original page</a></p>
+		} else {
+			<p>
+				<a href="@routes.Application.index()?_escaped_fragment_">Get a snapshot version</a>
+			</p>
+		}
+				
+		<p>
+			Wait 1 sec for JavaScript event
+		</p>
+
+	</body>
+</html>
