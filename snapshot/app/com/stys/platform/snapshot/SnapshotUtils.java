@@ -114,6 +114,9 @@ public class SnapshotUtils {
 		
 		WebClient client = new WebClient(browserVersion);
 		
+		// ignore javascript errors
+		client.getOptions().setThrowExceptionOnScriptError(false);
+		
 		// load requested page
 		HtmlPage page = client.getPage(url);
 		// give time for javascript to complete
